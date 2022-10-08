@@ -32,6 +32,8 @@ public abstract class Bag {
     public Bag(String color, int capacity) {
         this.color = color;
         this.capacity = capacity;
+        this.numberOfContents = 0;
+        this.contents = new String[0];
     }
 
 
@@ -81,11 +83,11 @@ public abstract class Bag {
     public boolean addItem(String item){
         if (this.numberOfContents < this.capacity){
             int n = this.numberOfContents + 1;
-            String[] newarr = new String[n + 1];
+            String[] newarr = new String[n];
 
-            if (this.numberOfContents >= 0) System.arraycopy(contents, 0, newarr, 0, this.numberOfContents);
+            System.arraycopy(contents, 0, newarr, 0, this.numberOfContents);
 
-            newarr[n+1] = item;
+            newarr[n-1] = item;
             numberOfContents += 1;
             contents = newarr;
             return true;
